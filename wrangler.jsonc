@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hills-wholesale-watch",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "triggers": {
+    // Hourly, 12:00-23:00 UTC — covers 8am-6pm Eastern across both EST and
+    // EDT; the scheduled handler filters out the DST-dependent extra hour.
+    "crons": ["0 12-23 * * *"]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SNAPSHOTS",
+      "id": "e0c817137c8e4b658444ff157d0dd0b2"
+    }
+  ],
+  "vars": {
+    "SOURCE_URL": "https://wholesalegaming.com/pokemon/",
+    "DEFAULT_TIMEZONE": "America/New_York"
+  }
+}
